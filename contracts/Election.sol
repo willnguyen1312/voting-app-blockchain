@@ -21,7 +21,7 @@ contract Election {
         uint indexed _candidateId
     );
 
-    function Election () public {
+    constructor()  public {
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
     }
@@ -33,7 +33,7 @@ contract Election {
 
     function vote (uint _candidateId) public {
         // require that they haven't voted before
-        require(!voters[msg.sender]);
+        require(!voters[msg.sender], "Oh ho");
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
